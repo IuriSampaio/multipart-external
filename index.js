@@ -25,7 +25,9 @@ const parser = multer({
     })
 })
  
-app.use(cors())
+
+app.use(cors());
+app.use(express.json());
 
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
     
