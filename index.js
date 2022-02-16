@@ -26,11 +26,11 @@ const parser = multer({
 })
  
 
-// app.use(cors());
+app.use(cors());
 // app.use(express.json());
 
 app.get( '/' , (req,res)=>{
-
+    res.send({teste:'abcd'})
 });
 
 
