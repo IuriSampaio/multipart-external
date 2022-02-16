@@ -50,9 +50,9 @@ app.get( '/' , (req,res)=>{
 
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
 
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, x-usertoken , Accept-Encoding, Connection, Host, Sec-Fetch-Dest, Sec-Fetch-Mode, User-Agent')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
+    // res.setHeader('Access-Control-Allow-Origin', '*');
+    // res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, x-usertoken , Accept-Encoding, Connection, Host, Sec-Fetch-Dest, Sec-Fetch-Mode, User-Agent')
+    // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
 
     const command = `curl "${req.query.url}" \
         --request POST \
