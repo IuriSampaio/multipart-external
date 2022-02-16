@@ -4,7 +4,7 @@ const path = require('path');
 
 const express = require('express'); 
 const multer = require('multer');
-
+var cors =  require('cors');
 
 const app = express();
 
@@ -25,6 +25,8 @@ const parser = multer({
     })
 })
  
+app.use(cors())
+
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
     
     var command = `curl "${req.query.url}" \
