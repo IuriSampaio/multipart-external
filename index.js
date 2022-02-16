@@ -9,7 +9,7 @@ const multer = require('multer');
 const app = express();
 
 const PORT = process.env.PORT || 3001;
-const HOST = process.env.HOST;
+const HOST = process.env;
 
 const parser = multer({ 
     dest: path.resolve(__dirname,'public'),
@@ -53,4 +53,4 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
 
 app.use(express.static('public'));
 
-app.listen( PORT , ( ) => console.log('🔥 SERVER STARTED AT '+HOST+':'+PORT) );
+app.listen( PORT , ( ) => console.log('🔥 SERVER STARTED AT '+JSON.stringify(HOST)+':'+PORT) );
