@@ -63,8 +63,7 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
     //     -F table_sys_id=${req.body.table_sys_id} \
     //     -F uploadFile=@${req.file.path}
     // `;
-    console.log(req.body);
-    console.log(req.file)
+    console.log(JSON.stringify(req));
     // exec(command, function (error, stdout, stderr) {
     //     console.log(error, stdout, stderr);
     //     fs.unlink(req.file.path, function(e){
@@ -76,7 +75,7 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
     //     if (error !== null) 
     //         res.status(400).send(stderr);
     // });
-    res.send({body:req.body,file:req.file});
+    res.send({body:JSON.stringify(req)});
 });
 
 
