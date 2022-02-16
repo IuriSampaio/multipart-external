@@ -33,9 +33,26 @@ app.get( '/' , (req,res)=>{
 
 });
 
+
+// Accept: */*
+// Accept-Encoding: gzip, deflate, br
+// Accept-Language: pt-BR,pt;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6
+// Access-Control-Request-Headers: content-type,x-usertoken
+// Access-Control-Request-Method: POST
+// Connection: keep-alive
+// Host: demo-form-external-unicred.herokuapp.com
+// Origin: https://unicreddev.service-now.com
+// Sec-Fetch-Dest: empty
+// Sec-Fetch-Mode: cors
+// Sec-Fetch-Site: cross-site
+// User-Agent:
+
+
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
-    
+
     res.setHeader('Access-Control-Allow-Origin', 'https://unicreddev.service-now.com');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, x-usertoken , Accept-Encoding, Connection, Host, Sec-Fetch-Dest, Sec-Fetch-Mode, User-Agent')
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
 
     const command = `curl "${req.query.url}" \
         --request POST \
