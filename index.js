@@ -40,8 +40,9 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
         -F table_sys_id=${req.body.table_sys_id} \
         -F uploadFile=@${req.file.path}
     `;
-
+    console.log(command);
     exec(command, function (error, stdout, stderr) {
+        console.table(error, stdout, stderr);
         fs.unlink(req.file.path, function(e){
             if (e != null) console.error("ERRO AO DELETAR O ANEXO DO SERVIDOR "+e)
         });
