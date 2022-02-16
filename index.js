@@ -8,6 +8,8 @@ const multer = require('multer');
 
 const app = express();
 
+const PORT = process.env.PORT || 3001;
+
 const parser = multer({ 
     dest: path.resolve(__dirname,'public'),
     storage: multer.diskStorage({
@@ -50,4 +52,4 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
 
 app.use(express.static('public'));
 
-app.listen( 3001 , ( ) => console.log('ouvindo') );
+app.listen( PORT , ( ) => console.log('🔥 SERVER STARTED AT '+PORT) );
