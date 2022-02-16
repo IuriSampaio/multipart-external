@@ -24,7 +24,7 @@ const parser = multer({
         }
     })
 })
- 
+
 
 app.use(cors());
 // app.use(express.json());
@@ -54,28 +54,29 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
     // res.setHeader('Access-Control-Allow-Headers', 'Origin, Content-Type, X-Auth-Token, x-usertoken , Accept-Encoding, Connection, Host, Sec-Fetch-Dest, Sec-Fetch-Mode, User-Agent')
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PATCH, PUT, DELETE, OPTIONS')
 
-    const command = `curl "${req.query.url}" \
-        --request POST \
-        --header Accept:application/json \
-        --user ${req.query.user_name}:${req.query.password} \
-        --header Content-Type:multipart/form-data \
-        -F table_name=${req.body.table_name} \
-        -F table_sys_id=${req.body.table_sys_id} \
-        -F uploadFile=@${req.file.path}
-    `;
-    console.log(command);
-    exec(command, function (error, stdout, stderr) {
-        console.log(error, stdout, stderr);
-        fs.unlink(req.file.path, function(e){
-            if (e != null) console.error("ERRO AO DELETAR O ANEXO DO SERVIDOR "+e)
-        });
+    // const command = `curl "${req.query.url}" \
+    //     --request POST \
+    //     --header Accept:application/json \
+    //     --user ${req.query.user_name}:${req.query.password} \
+    //     --header Content-Type:multipart/form-data \
+    //     -F table_name=${req.body.table_name} \
+    //     -F table_sys_id=${req.body.table_sys_id} \
+    //     -F uploadFile=@${req.file.path}
+    // `;
+    console.log(req.body);
+    console.log(req.file)
+    // exec(command, function (error, stdout, stderr) {
+    //     console.log(error, stdout, stderr);
+    //     fs.unlink(req.file.path, function(e){
+    //         if (e != null) console.error("ERRO AO DELETAR O ANEXO DO SERVIDOR "+e)
+    //     });
 
-        res.send(stdout);
+    //     res.send(stdout);
         
-        if (error !== null) 
-            res.status(400).send(stderr);
-    });
-    
+    //     if (error !== null) 
+    //         res.status(400).send(stderr);
+    // });
+    res.send({body:req.body,file:req.file});
 });
 
 
