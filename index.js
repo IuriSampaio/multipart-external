@@ -26,12 +26,18 @@ const parser = multer({
 })
  
 
-app.use(cors());
+// app.use(cors());
 // app.use(express.json());
+
+app.get( '/' , (req,res)=>{
+
+});
 
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
     
-    var command = `curl "${req.query.url}" \
+    res.setHeader('Access-Control-Allow-Origin', 'https://unicreddev.service-now.com');
+
+    const command = `curl "${req.query.url}" \
         --request POST \
         --header Accept:application/json \
         --user ${req.query.user_name}:${req.query.password} \
