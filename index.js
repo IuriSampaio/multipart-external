@@ -64,7 +64,7 @@ app.post( '/' ,parser.single('file'), async ( req , res ) => {
     //     -F uploadFile=@${req.file.path}
     // `;
     var body = Object.assign({}, req.body)
-    console.log({file: req.file, body});
+    console.log({file: req.file, body, req:req});
     // exec(command, function (error, stdout, stderr) {
     //     console.log(error, stdout, stderr);
     //     fs.unlink(req.file.path, function(e){
