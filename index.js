@@ -25,14 +25,11 @@ const parser = multer({
     })
 })
 
-
 app.use(cors());
-// app.use(express.json());
 
 app.get( '/' , (req,res)=>{
-    res.send({teste:'abcd'})
+    res.send({ok:'ta no ar aqui'})
 });
-
 
 app.post( '/' ,parser.single('file'), async ( req , res ) => {
 
